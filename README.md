@@ -7,10 +7,10 @@
 - controle centralizado de alunos, professores, cursos, disciplinas, histórico escolar e turmas
 
 ## **Aula 00 - Criação das entidades** 
-! [aula 00](00-DER-facu.png)
+![aula 00](00-DER-facu.png)
 
-## **Aula 01 - Criação das entidades** 
-! [aula 00](01-DER-facu-com-atributos.png)
+## **Aula 01 - Alocando atributos** 
+![aula 00](01-DER-facu-com-atributos.png)
 ## **Entidades** 
 ### **Professor** 
 #### **Atributos:** 
