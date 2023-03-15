@@ -10,7 +10,14 @@
 ![aula 00](00-DER-facu.png)
 
 ## **Aula 01 - Alocando atributos** 
-![aula 00](01-DER-facu-com-atributos.png)
+![aula 01](01-DER-facu-com-atributos.png)
+
+## **Aula 02 - Determinando cardinalidade** 
+![aula 02](02-DER-facu-cardinalidade.png)
+
+## **Aula 03 - Eliminando relacionamentos muitos para muitos** 
+![aula 03](.png)
+
 ## **Entidades** 
 ### **Professor** 
 #### **Atributos:** 
