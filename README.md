@@ -16,7 +16,7 @@
 ![aula 02](02-DER-facu-cardinalidade.png)
 
 ## **Aula 03 - Eliminando relacionamentos muitos para muitos** 
-![aula 03](.png)
+![aula 03](03-DER-facu-eliminando-n-m.png)
 
 ## **Entidades** 
 ### **Professor** 
