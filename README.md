@@ -95,7 +95,7 @@
 | - | - | - | - | - |
 | <ins>Cod_Historico</ins> | Inteiro | 4 bytes | PK, NOT NULL | Código de identificação do histórico |
 | RA | Caractere | 8 bytes | FK, NOT NULL | Código de identificação do aluno |
-| Período_Realização | Inteiro | 4 bytes | NOT NULL | Duração de realização da disciplina (em meses) |
+| Período_Realização | Data | 4 bytes | NOT NULL | Duração de realização da disciplina (em meses) |
 
 
 # **Entidades Associativas**
@@ -130,60 +130,7 @@
 ### **Modelo Lógico:**
 ![aula 05](04-DER-facu-logico.png)
 
-## **Entidades** 
-### **Professor** 
-#### **Atributos:** 
-- <ins>Cod_Professor</ins>
-- Nome
-- Sobrenome
-- Cod_Departamento
-- Status
-### **Departamento** 
-#### **Atributos:** 
-- <ins>Cod_Departamento</ins>
-- Nome
-### **Curso** 
-#### **Atributos:** 
-- <ins>Cod_Curso</ins>
-- Nome
-- Cod_Departamento
-### **Aluno** 
-#### **Atributos:** 
-- <ins>RA</ins>
-- Nome
-- Sobrenome
-- Endereço
-- Cod_Curso
-- *Telefone
-- Status
-- Filiação
-- Sexo
-- *Contato
-- Cod_Turma
-- CPF
-### **Disciplina** 
-#### **Atributos:** 
-- <ins>Cod_Disciplina</ins>
-- Nome
-- Descrição
-- Cod_Departamento
-- Num_Alunos
-- Carga_Horária 
-### **Turma** 
-#### **Atributos:** 
-- <ins>Cod_Turma</ins>
-- Período
-- Cod_Curso
-- Num_Alunos
-- Data_Início
-- Data_Fim
-### **Histórico** 
-#### **Atributos:** 
-- <ins>Cod_Historico</ins>
-- Notas
-- Média
-- Frequência
-- Período_Realização
-- RA
-- Cod_Disciplina
+## **Aula 06 - Normalização - Primeira Forma Normal** 
+![aula 06](05-DER-facu-logico-FDN.png)
+
 
