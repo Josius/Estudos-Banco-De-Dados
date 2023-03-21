@@ -131,6 +131,21 @@
 ![aula 05](04-DER-facu-logico.png)
 
 ## **Aula 06 - Normalização - Primeira Forma Normal** 
-![aula 06](05-DER-facu-logico-FDN.png)
+Regras:
+- existe chave 1ª
+- somente valores atômicos (não multivalorados)
+- relação não possui atributos multivalorados ou relações aninhadas
+- relação não possui atributos compostos
+
+![aula 06](05-DER-facu-logico-1FN.png)
+
+## **Aula 07 - Normalização - Segunda Forma Normal** 
+Regras:
+- estar na 1FN
+- todos os atributos não-chave (seja primária ou estrangeira) são funcionalmente dependentes de todas as partes da chave primária
+- não existem dependências parciais
+- atributos não dependem de chaves candidatas
+- Caso contrário, deve-se gerar uma nova tabela com os dados
+![aula 07](06-DER-facu-logico-2FN.png)
 
 
