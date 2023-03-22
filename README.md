@@ -140,12 +140,138 @@ Regras:
 ![aula 06](05-DER-facu-logico-1FN.png)
 
 ## **Aula 07 - Normalização - Segunda Forma Normal** 
-Regras:
-- estar na 1FN
+**Regras:**
+- estar na 1ª FN
 - todos os atributos não-chave (seja primária ou estrangeira) são funcionalmente dependentes de todas as partes da chave primária
 - não existem dependências parciais
 - atributos não dependem de chaves candidatas
-- Caso contrário, deve-se gerar uma nova tabela com os dados
+- caso contrário, deve-se gerar uma nova tabela com os dados
+
+**Alterações após a 2ª FN:**
+- Adicionadas as tabelas:
+  - Endereço
+  - Logradouro
+  - Filiação
+  - Telefones_Aluno
+  - Tipo_Telefon
 ![aula 07](06-DER-facu-logico-2FN.png)
 
+## **Aula 08 - Normalização - Terceira Forma Normal** 
+Regras:
+- estar na 2ª FN
+- não existirem dependências transitivas
+- uma tabela está na 3ª FN se ela estiver na 2ª FN e se nenhuma coluna não-chave depender de outra coluna não-chave
+- dependência transitiva é uma dependência funcional entre dois ou mais atributos não-chave.
+- caso contrário, deve-se gerar uma nova tabela com os dados
 
+**Como resolver:**
+- p/cada atributo (ou grupo) não-chave que for um determinante na relação, crie uma nova tabela
+- esse atributo será a PK da relação
+- mova então todos os atributos que são dependentes funcionalmente do atributo chave para a nova tabela
+- o atributo (PK na nova relação) fica também na tabela original, e servirá como uma chave estrangeira para associar as duas relações
+
+## **Aula 09 - Dicionário de Dados Atualizado: Atributos** 
+## **Entidade Professor**
+| Atributo | Tipo de dado | Comprimento | Restrições | Descrição |
+| - | - | - | - | - |
+| <ins>Cod_Professor</ins> | Inteiro | 4 bytes | PK, NOT NULL | Código de identificação do professor |
+| Nome | Caractere | 40 bytes | NOT NULL | Nome do professor |
+| Sobrenome | Caractere | 40 bytes | NOT NULL | Sobrenome do professor |
+| Status | Booleano | 1 bit | NOT NULL | Estado do professor (lecionando/não lecionando) |
+| Cod_Departamento | Inteiro | 4 bytes | FK, NOT NULL | Código de identificação do departamento |
+
+## **Entidade Departamento**
+| Atributo | Tipo de dado | Comprimento | Restrições | Descrição |
+| - | - | - | - | - |
+| <ins>Cod_Departamento</ins> | Inteiro | 4 bytes | PK, NOT NULL | Código de identificação do departamento |
+| Nome | Caractere | 40 bytes | NOT NULL | Nome do departamento |
+
+## **Entidade Curso**
+| Atributo | Tipo de dado | Comprimento | Restrições | Descrição |
+| - | - | - | - | - |
+| <ins>Cod_Curso</ins> | Inteiro | 2 bytes | PK, NOT NULL | Código de identificação do curso |
+| Nome | Caractere | 20 bytes | NOT NULL | Nome do curso |
+| Cod_Departamento | Inteiro | 4 bytes | FK, NOT NULL | Código de identificação do curso |
+
+## **Entidade Aluno**
+| Atributo | Tipo de dado | Comprimento | Restrições | Descrição |
+| - | - | - | - | - |
+| <ins>RA</ins> | Caractere | 8 bytes | PK, NOT NULL | Código de identificação do aluno |
+| Nome | Caractere | 25 bytes | NOT NULL | Nome do aluno |
+| Sobrenome | Caractere | 40 bytes | NOT NULL | Sobrenome do aluno |
+| CPF | Caractere | 40 bytes | NOT NULL | CPF do aluno |
+| *Telefone | Caractere | 40 bytes | NOT NULL | Telefones do aluno |
+| Status | Caractere | 1 byte | NOT NULL | Estado da matrícula do aluno |
+| *Contato | Caractere | 40 bytes | NOT NULL | Forma de contato com o aluno |
+| Filiação | Caractere | 80 bytes | NOT NULL | Nome da mãe do aluno |
+| Sexo | Caractere | 1 byte | NOT NULL | Sexo do aluno |
+| Cod_Curso | Inteiro | 4 bytes | FK, NOT NULL | Código de identificação do departamento |
+| Cod_Turma | Inteiro | 4 bytes | FK, NOT NULL | Código de identificação do departamento |
+
+## **Entidade Endereço**
+| Atributo | Tipo de dado | Comprimento | Restrições | Descrição |
+| - | - | - | - | - |
+| <ins>Cod_Endereco</ins> | Inteiro | 4 bytes | PK, NOT NULL | Código de identificação do endereço |
+| Logradouro | Caractere | 40 bytes | NOT NULL | Rua, avenida, alameda, viela, etc. |
+| Nome | Caractere | 80 bytes | NOT NULL | Nome do endereço do aluno |
+| Número | Caractere | 10 byte | NOT NULL | Número da casa do aluno |
+| CEP | Caractere | 10 byte | NOT NULL | CEP do endereço do aluno |
+| Bairro | Caractere | 40 bytes | NOT NULL | Bairro onde o aluno reside |
+| Cidade | Caractere | 40 bytes | NOT NULL | Cidade onde o aluno reside |
+| Estado | Caractere | 40 bytes | NOT NULL | Estado onde o aluno reside |
+
+## **Entidade Disciplina**
+| Atributo | Tipo de dado | Comprimento | Restrições | Descrição |
+| - | - | - | - | - |
+| <ins>Cod_Disciplina</ins> | Inteiro | 4 bytes | PK, NOT NULL | Código de identificação da disciplina |
+| Nome | Caractere | 30 bytes | NOT NULL | Nome da disciplina |
+| Descrição | Caractere | 200 bytes | NULL | Descrição da disciplina |
+| Num_Alunos | Inteiro | 4 bytes | NOT NULL | Número de alunos na disciplina |
+| Carga_Horária  | Inteiro | 4 bytes | NOT NULL | Carga horária total da disciplina |
+| Cod_Departamento | Inteiro | 4 bytes | FK, NOT NULL | Código do departamento responsável pela disciplina |
+
+## **Entidade Turma**
+| Atributo | Tipo de dado | Comprimento | Restrições | Descrição |
+| - | - | - | - | - |
+| <ins>Cod_Turma</ins> | Inteiro | 4 bytes | PK, NOT NULL | Código de identificação do turma |
+| Período | Caractere | 20 bytes | NOT NULL | Período da turma (manhã, tarde ou noite) |
+| Num_Alunos | Inteiro | 4 bytes | NOT NULL | Número de alunos matriculados na turma |
+| Data_Início | Data | 4 bytes | NOT NULL | Data de início da turma |
+| Data_Fim | Data | 4 bytes | NOT NULL | Data de fim da turma |
+| Cod_Curso | Inteiro | 4 bytes | FK, NOT NULL | Código de identificação do curso |
+
+## **Entidade Histórico**
+| Atributo | Tipo de dado | Comprimento | Restrições | Descrição |
+| - | - | - | - | - |
+| <ins>Cod_Historico</ins> | Inteiro | 4 bytes | PK, NOT NULL | Código de identificação do histórico |
+| RA | Caractere | 8 bytes | FK, NOT NULL | Código de identificação do aluno |
+| Período_Realização | Data | 4 bytes | NOT NULL | Duração de realização da disciplina (em meses) |
+
+
+# **Entidades Associativas**
+
+## **Entidade Disc_Hist**
+| Atributo | Tipo de dado | Comprimento | Restrições | Descrição |
+| - | - | - | - | - |
+| <ins>Cod_Historico</ins> | Inteiro | 4 bytes | PK, FK, NOT NULL | Código de identificação do histórico |
+| <ins>Cod_Disciplina</ins> | Inteiro | 4 bytes | PK, FK, NOT NULL | Código de identificação da disciplina |
+| Nota | Decimal | 8 bytes | NOT NULL | Nota da disciplina |
+| Frequência | Inteiro | 4 bytes | NOT NULL | Número de faltas na disciplina |
+
+## **Entidade Curso_Disciplina**
+| Atributo | Tipo de dado | Comprimento | Restrições | Descrição |
+| - | - | - | - | - |
+| <ins>Cod_Curso</ins> | Inteiro | 4 bytes | PK, FK, NOT NULL | Código de identificação do curso |
+| <ins>Cod_Disciplina</ins> | Inteiro | 4 bytes | PK, FK, NOT NULL | Código de identificação da disciplina |
+
+## **Entidade Prof_Disciplina**
+| Atributo | Tipo de dado | Comprimento | Restrições | Descrição |
+| - | - | - | - | - |
+| <ins>Cod_Professor</ins> | Inteiro | 4 bytes | PK, FK, NOT NULL | Código de identificação do professor |
+| <ins>Cod_Disciplina</ins> | Inteiro | 4 bytes | PK, FK, NOT NULL | Código de identificação da disciplina |
+
+## **Entidade Aluno_Disci**
+| Atributo | Tipo de dado | Comprimento | Restrições | Descrição |
+| - | - | - | - | - |
+| <ins>Cod_Aluno</ins> | Caractere | 8 bytes | PK, NOT NULL | Código de identificação do aluno (RA) |
+| <ins>Cod_Disciplina</ins> | Inteiro | 4 bytes | PK, FK, NOT NULL | Código de identificação da disciplina |
