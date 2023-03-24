@@ -105,7 +105,7 @@ create table Disc_Hist(
 );
 
 create table Tipo_Telefones(
-    cod_tipo_telefone smallserial primary key, 
+    cod_tipo_telefone smallserial primary key,
     tipo_telefone varchar(12) not null
 );
 
@@ -125,6 +125,7 @@ create table Tipo_Logradouro(
 
 create table Endereco(
     cod_endereco smallserial primary key,
+    cod_tipo_logradouro smallserial not null,
     nome varchar(50) not null,
     numero varchar(6) not null,
     CEP varchar(8) not null,
@@ -133,7 +134,6 @@ create table Endereco(
     cidade varchar(40) not null,
     estado varchar(40) not null,
     RA serial not null,
-    cod_tipo_logradouro smallserial not null,
     constraint fk_cod_RA_end foreign key (RA) references Aluno (RA),
     constraint fk_cod_tipo_logradouro foreign key (cod_tipo_logradouro) references Tipo_Logradouro (cod_tipo_logradouro)
 );
