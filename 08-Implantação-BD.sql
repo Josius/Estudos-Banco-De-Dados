@@ -111,9 +111,9 @@ create table Tipo_Telefones(
 
 create table Telefones_Aluno(
     cod_telefone_aluno smallserial primary key,
-    num_telefone varchar(11) not null,
     RA serial not null,
     cod_tipo_telefone smallserial not null,
+    num_telefone varchar(11) not null,
     constraint fk_cod_RA_tel foreign key (RA) references Aluno (RA),
     constraint fk_cod_tipo_telefone foreign key (cod_tipo_telefone) references Tipo_Telefones(cod_tipo_telefone)
 );
